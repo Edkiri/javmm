@@ -8,54 +8,93 @@ const dificultad = sessionStorage.getItem('dificultad');
 const selectColorsGameDiv = document.querySelector('.select-colors-game-div');
 
 // Determinar la cantidad de divs según el nivel de dificultad
-let numDivs;
+let numColorButton;
+let numRows;
 switch (dificultad) {
     case "middle":
-        numDivs = 5;
+        numColorButton = 5;
+        numRows = 8;
         break;
     case "hard":
-        numDivs = 6;
+        numColorButton = 6;
+        numRows = 6;
         break;
     default:
-        numDivs = 4;
+        numColorButton = 4;
+        numRows = 10;
         break;
 }
 const colores = JSON.parse(sessionStorage.getItem('arrayColors'));
 
 // Generar los divs dinámicamente
-for (let i = 1; i <= numDivs; i++) {
+for (let i = 1; i <= numColorButton; i++) {
   const div = document.createElement('div');
-  div.classList.add(`color-select-ball0${i}`);
   div.classList.add('color-select-ball');
   div.id=`cs-${i}`
-  div.style.backgroundColor = colores[i - 1]
+  div.style.backgroundColor = colores[i - 1];
   selectColorsGameDiv.appendChild(div);
 }
 // Obtener el array de colores del sessionStorage
 console.log(colores)
 
-// colores.map((color, index) => {
-//   const bola = document.querySelector('#cs-' + (index + 1));
-//   bola.style.backgroundColor = color;
-// })
+const tableroElement = document.getElementById("tableGame");
+let rowsCreated = 0;
+const createRows = () => {
+    const rowElement = document.createElement("div");
+    rowElement.classList.add("row");
+    rowElement.id = `row${rowsCreated + 1}`;
 
-//   const colorSelectBall01 = document.querySelector('#cs-1');
-//   const colorSelectBall02 = document.querySelector('#cs-2');
-//   const colorSelectBall03 = document.querySelector('#cs-3');
-//   const colorSelectBall04 = document.querySelector('#cs-4');
+    const checkContainer = document.createElement("div");
+    checkContainer.classList.add("check-cell");
+    const historyContainer = document.createElement("div");
+    historyContainer.classList.add("row-history");
 
-// let color1 = colores[0].toString()
-// let color2 = colores[1].toString()
-// let color3 = colores[2].toString()
-// let color4 = colores[3].toString()
-// console.log(color1)
-// console.log(color2)
-// console.log(color3)
-// console.log(color4)
+    for(let i = 0; i < 4; i++) {
+        const smallBallElement = document.createElement("div");
+        smallBallElement.className = "check small-balls";
+        checkContainer.appendChild(smallBallElement);
+    }
 
-//   colorSelectBall01.style.backgroundColor = color1;
-//   colorSelectBall02.style.backgroundColor = color2;
-//   colorSelectBall03.style.backgroundColor = color3;
-//   colorSelectBall04.style.backgroundColor = color4;
+    for(let i = 0; i < 4; i++) {
+        const historyBall = document.createElement("div");
+        historyBall.classList.add("history-ball");
+        historyContainer.appendChild(historyBall);
+    }
+
+    const checkButton = document.createElement("button");
+    checkButton.type = "button";
+    checkButton.textContent = "Check";
+    checkButton.classList.add("check-btn");
+
+    // Agregamos a la row
+    rowElement.appendChild(checkContainer);
+    rowElement.appendChild(historyContainer);
+    rowElement.appendChild(checkButton);
+    // Agregamos la row al tablero
+    tableroElement.appendChild(rowElement);
+    rowsCreated += 1;
+}
+
+for(let i = 1; i <= numRows; i++) {
+    createRows()
+}
+
+const colorButtonsNodeList = document.querySelectorAll(".color-select-ball");
+const colorButtonsArray = Array.from(colorButtonsNodeList);
+
+colorButtonsArray.forEach((colorButton) => {
+    colorButton.addEventListener("click", () => {
+        const color = colorButton.style.backgroundColor;
+        paintBall(color);
+    })
 })
 
+const paintBall = (color) => {
+    console.log(color);
+}
+
+const checkRol = () => {
+    alert("Comprobando..")
+}
+
+})

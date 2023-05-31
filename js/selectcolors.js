@@ -52,6 +52,8 @@ switch (dificultad) {
     });
   });
 
+  console.log(arrayColors);
+
   // Función para seleccionar un color y almacenarlo en el array de colores seleccionados
   function selectColor(index) {
     colorDivs[index].style.backgroundColor = colorInput.value;
@@ -70,7 +72,7 @@ switch (dificultad) {
       sessionStorage.setItem('combinacionSecreta', JSON.stringify(combinacionSecreta));
 
       // Redirigimos a la página del tablero de juego
-      window.location.href = '../pages/game.html';
+      window.location.href = '../pages/game2.html';
     }
   });
 });

@@ -316,6 +316,7 @@ body {
 }
 .table-game {
     display: flex;
+    flex-direction: column-reverse;
     position: fixed;
     background-color: #000000;
     height: 35.3em;
@@ -332,7 +333,7 @@ body {
     border-bottom: rgb(183, 183, 255) solid 0.25em;
     border-right: rgb(183, 183, 255) solid 0.25em;
 }
-.check-cell01, .check-cell02, .check-cell03, .check-cell04, .check-cell05, .check-cell06, .check-cell07, .check-cell08, .check-cell09, .check-cell10 {
+.check-cell, .check-cell01, .check-cell02, .check-cell03, .check-cell04, .check-cell05, .check-cell06, .check-cell07, .check-cell08, .check-cell09, .check-cell10 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -344,7 +345,7 @@ body {
 .check-cell10 {
     border: none;
 }
-.check01, .check02, .check03, .check04 {
+.check, .check01, .check02, .check03, .check04 {
     display: flex;
     border-radius: 1em;
     background-color: "";
@@ -360,7 +361,7 @@ body {
     border-top: rgb(183, 183, 255) solid 0.25em;
     border-bottom: rgb(183, 183, 255) solid 0.25em;
 }
-.row-history01, .row-history02, .row-history03, .row-history04, .row-history05, .row-history06, .row-history07, .row-history08, .row-history09, .row-history10 {
+.row-history, .row-history01, .row-history02, .row-history03, .row-history04, .row-history05, .row-history06, .row-history07, .row-history08, .row-history09, .row-history10 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -372,7 +373,7 @@ body {
 .row-history10 {
     border: none;
 }
-.history-ball01, .history-ball02, .history-ball03, .history-ball04 {
+.history-ball, .history-ball01, .history-ball02, .history-ball03, .history-ball04 {
     width: 2.7em;
     height: 2.7em;
     margin: -3em;
@@ -399,7 +400,7 @@ body {
     justify-content: space-evenly;
     width: 21rem;
 }
-.color-select-ball01, .color-select-ball02, .color-select-ball03, .color-select-ball04, .color-select-ball05, .color-select-ball06 {
+.color-select-ball, .color-select-ball01, .color-select-ball02, .color-select-ball03, .color-select-ball04, .color-select-ball05, .color-select-ball06 {
     width: 3.5em;
     height: 3.5em;
     border-radius: 5em;
@@ -432,4 +433,8 @@ body {
         height: 4em;
     }
     
+}
+
+.row {
+    display: flex;
 }
